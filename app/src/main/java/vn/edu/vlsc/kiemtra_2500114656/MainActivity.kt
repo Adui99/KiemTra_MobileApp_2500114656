@@ -1,5 +1,6 @@
 package vn.edu.vlsc.kiemtra_2500114656
 
+import android.content.Intent // <--- Đảm bảo đã import Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
@@ -43,9 +44,13 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Dữ liệu hợp lệ
+            // Dữ liệu hợp lệ -> Chuyển màn hình sang ProfileActivity[cite: 2]
             tvStatus.setTextColor(android.graphics.Color.parseColor("#4CAF50"))
             tvStatus.text = "Đăng nhập hợp lệ"
+
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra("USER_EMAIL", email) // Truyền email qua Bundle/Intent[cite: 2]
+            startActivity(intent)
         }
     }
 }
